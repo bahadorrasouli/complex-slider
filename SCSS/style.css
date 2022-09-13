@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #d7dbdf;
+}
+
+.container {
+  width: 1024px;
+  background: linear-gradient(90deg, #3f4a6e 0%, #3f4a6e 38%, #fff 38%, #fff 100%);
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(149, 149, 149, 0.3);
+  padding: 120px 60px 55px 60px;
+}
+
+.dynamic-preview {
+  height: 485px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  grid-template-rows: 70px 340px 60px;
+  justify-content: space-between;
+  align-content: space-between;
+  -moz-column-gap: 60px;
+       column-gap: 60px;
+  cursor: default;
+}
+.dynamic-preview .images-section {
+  position: relative;
+  -webkit-animation: load-page 1s ease-in-out;
+          animation: load-page 1s ease-in-out;
+}
+.dynamic-preview .images-section .images-holder .item-container {
+  position: absolute;
+}
+.dynamic-preview .images-section .images-holder .item-container > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-weight: 900;
+  font-size: 30px;
+}
+.dynamic-preview .images-section .images-holder .item-container > div:not(.active) {
+  opacity: 0;
+  display: none;
+}
+.dynamic-preview .images-section .images-holder .item-container > div.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dynamic-preview .images-section .images-holder .item-container > div.deactive {
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+}
+.dynamic-preview .images-section .images-holder .wheel-back {
+  width: 185px;
+  height: 185px;
+  bottom: 0;
+  left: 0;
+}
+.dynamic-preview .images-section .images-holder .wheel-back .active {
+  -webkit-animation: wheel-back 1.2s ease-out;
+          animation: wheel-back 1.2s ease-out;
+}
+.dynamic-preview .images-section .images-holder .wheel-back .deactive {
+  -webkit-animation: wheel-back-out 1.2s ease-in;
+          animation: wheel-back-out 1.2s ease-in;
+}
+.dynamic-preview .images-section .images-holder .wheel-front {
+  width: 185px;
+  height: 192px;
+  bottom: 0;
+  right: 0;
+}
+.dynamic-preview .images-section .images-holder .body {
+  width: 306px;
+  height: 233px;
+  bottom: 30px;
+  left: 94px;
+}
+.dynamic-preview .images-section .images-holder .body .active {
+  -webkit-animation: body-in 1.2s ease-out;
+          animation: body-in 1.2s ease-out;
+}
+.dynamic-preview .images-section .images-holder .body .deactive {
+  -webkit-animation: body-out 1.2s ease-in;
+          animation: body-out 1.2s ease-in;
+}
+.dynamic-preview .images-section .images-holder .saddle {
+  display: none;
+  width: 90px;
+  height: 133px;
+  top: 50px;
+  left: 105px;
+}
+.dynamic-preview .images-section .images-holder .steering {
+  display: none;
+  width: 50px;
+  height: 53px;
+  top: 25px;
+  right: 145px;
+}
+.dynamic-preview .images-section .images-holder img {
+  width: 100%;
+}
+.dynamic-preview .controller-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dynamic-preview .controller-section .main-panel > .title {
+  font-weight: 900;
+  font-size: 32px;
+  color: #1d1d1d;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+.dynamic-preview .controller-section .main-panel .btns {
+  display: flex;
+  background-color: #fff;
+}
+.dynamic-preview .controller-section .main-panel .btns li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  color: #1d1d1d;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.dynamic-preview .controller-section .main-panel .btns li:last-child {
+  margin-right: 0;
+}
+.dynamic-preview .controller-section .main-panel .btns li:hover {
+  background-color: #f0f0f0;
+}
+.dynamic-preview .controller-section .main-panel .btns li.active {
+  color: #fff;
+  background-color: #42caf5;
+  cursor: default;
+}
+.dynamic-preview .controller-section .option-panel > .title {
+  font-weight: 500;
+  font-size: 16px;
+  color: #777777;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+.dynamic-preview .controller-section .option-panel > .btns {
+  position: relative;
+  background-color: #fff;
+  min-height: 120px;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container {
+  position: absolute;
+  display: none;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container.active {
+  display: block;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul {
+  display: flex;
+  background-color: #fff;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul li {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: 120px;
+  border-radius: 5px;
+  padding: 20px 10px;
+  cursor: pointer;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul li:hover {
+  position: relative;
+  background-color: #fbfbfb;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul li:hover::after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 25px);
+  border-radius: 5px;
+  background-color: #42caf5;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul li.active {
+  background-color: #f0f0f0;
+  cursor: default;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul li.active::after {
+  content: "";
+  display: none;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul li > .img {
+  width: 100%;
+  height: 80px;
+  background-color: rgb(218, 218, 218);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dynamic-preview .controller-section .option-panel > .btns .item-container ul li > .title {
+  font-size: 12px;
+  text-align: center;
+}
+
+@-webkit-keyframes wheel-back {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes wheel-back {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+}
+@-webkit-keyframes wheel-back-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+}
+@keyframes wheel-back-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-180deg) scale(1.05);
+  }
+}
+@-webkit-keyframes body-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes body-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes body-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}
+@keyframes body-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}
+@-webkit-keyframes load-page {
+  from {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes load-page {
+  from {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=style.css.map */
